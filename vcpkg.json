@@ -1,0 +1,13 @@
+{
+  "name": "voxel-learning-path",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "sfml",
+    "glfw3",
+    "glm",
+    "stb",
+    "glad",
+    "fastnoise2",
+    "catch2"
+  ]
+}

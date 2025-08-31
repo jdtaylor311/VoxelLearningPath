@@ -1,0 +1,37 @@
+# Build & temp
+/build/
+out/
+bin/
+obj/
+*.obj
+*.o
+*.pch
+*.pdb
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.cache
+*.log
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+install_manifest.txt
+
+# VS/VSCode
+.vscode/
+.vs/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# vcpkg
+.vcpkg-root
+vcpkg_installed/
