@@ -24,3 +24,36 @@
 //
 // Write your code below this line.
 // -----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+
+using std::string;
+using namespace std;
+
+std::string helloWorld() {
+	return "Hello, World\n";
+}
+
+std::string helloVariable(string name) {
+	return "Hello, " + name + ".\n";
+}
+
+void waitForInput() {
+	std::cout << "Press enter to exit...";
+    std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.get();
+}
+
+int main() {
+	std::cout << helloWorld();
+	std::cout << "What is your name?\n";
+
+	string name = "";
+	getline(cin, name);
+
+	std::cout << helloVariable(name);
+	waitForInput();
+	return 0;
+}
+

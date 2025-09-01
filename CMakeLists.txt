@@ -1,25 +1,34 @@
 cmake_minimum_required(VERSION 3.20)
-project(VoxelLearningPath NONE)
+project(VoxelLearningPath LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# This repo is a **learning scaffold**. Each folder is a standalone microproject.
-# Create your own CMakeLists.txt inside a microproject when you're ready to build it.
-# Example (inside 03_DrawWindow2D_SFML):
-#
-#   cmake_minimum_required(VERSION 3.20)
-#   project(Draw2D LANGUAGES CXX)
-#   set(CMAKE_CXX_STANDARD 20)
-#   find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
-#   add_executable(Draw2D main.cpp)
-#   target_link_libraries(Draw2D PRIVATE sfml-graphics sfml-window sfml-system)
-#
-# Tip: Open just the microproject folder in VS Code or add_subdirectory() from here once you have code.
-#
-# add_subdirectory(03_DrawWindow2D_SFML)   # ← uncomment after you add a CMakeLists.txt there
+# ---- Console ----
+add_subdirectory(00_ConsoleHelloWorld)
+add_subdirectory(01_ConsoleLoopsFunctions)
+add_subdirectory(02_ConsoleTinyTextGame)
 
-# --- Tests --------------------------------------------------------------
-# To enable the test scaffold, configure and build the 'tests' subdir:
-#   cmake -S . -B build -G "Visual Studio 17 2022" -A x64
-#   cmake --build build --config Debug --target voxel_tests
-#   ctest --test-dir build -C Debug --output-on-failure
-#
+# ---- 2D (SFML) ----
+add_subdirectory(03_DrawWindow2D_SFML)
+add_subdirectory(04_InputMovement2D)
+add_subdirectory(05_AnimationDeltaTime)
+add_subdirectory(06_2DPhysicsBounce)
+add_subdirectory(07_2DCollisionResolution)
+
+# ---- 3D (OpenGL/GLFW/GLM/GLAD) ----
+add_subdirectory(08_3DWindow_GLFW_OpenGL)
+add_subdirectory(09_FirstCubeWithMatrices)
+add_subdirectory(10_CameraWASD_MouseLook)
+add_subdirectory(11_TexturedCube)
+
+# ---- Voxels ----
+add_subdirectory(12_VoxelBasics_ChunkData)
+add_subdirectory(13_VoxelMeshing_FaceCulling)
+add_subdirectory(14_VoxelMeshing_Greedy)
+add_subdirectory(15_Terrain_Noise)
+add_subdirectory(16_ChunksStreaming)
+add_subdirectory(17_Lighting_AO)
+add_subdirectory(18_SaveLoad_World)
+
+# ---- Tests ----
 add_subdirectory(tests)
