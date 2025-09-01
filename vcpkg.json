@@ -7,7 +7,6 @@
     "glm",
     "stb",
     "glad",
-    "fastnoise2",
     "catch2"
   ]
 }
