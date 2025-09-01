@@ -20,12 +20,16 @@ if (Test-Path $VcpkgRoot) {
     & "$VcpkgRoot\bootstrap-vcpkg.bat"
 }
 
-# Deps install
-Write-Host "Installing deps via vcpkg (x64-windows) ..." -ForegroundColor Cyan
-& "$VcpkgRoot\vcpkg.exe" install sfml:x64-windows glfw3:x64-windows glad:x64-windows glm:x64-windows stb:x64-windows fastnoise2:x64-windows catch2:x64-windows
-& "$VcpkgRoot\vcpkg.exe" integrate install
+# In **manifest mode**, DO NOT pass package names to `vcpkg install`.
+# The dependencies are read from vcpkg.json at the repo root.
+Write-Host "Installing manifest dependencies via vcpkg (x64-windows) ..." -ForegroundColor Cyan
+$ManifestArgs = @("--triplet","x64-windows","--clean-after-build","--x-manifest-root",$RepoRoot)
+& "$VcpkgRoot\vcpkg.exe" install @ManifestArgs
 
-# Git init
+# Optional: integrate so Visual Studio picks up the toolchain automatically
+& "$VcpkgRoot\vcpkg.exe" integrate install | Out-Null
+
+# --- Git init ----------------------------------------------------------------
 if (-not $NoGit) {
     if (Check-Cmd git) {
         if (-not (Test-Path ".git")) {
