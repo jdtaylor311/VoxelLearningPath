@@ -6,7 +6,11 @@ $ErrorActionPreference = "Stop"
 
 function Check-Cmd { param([string]$n) return [bool](Get-Command $n -ErrorAction SilentlyContinue) }
 
-# vcpkg
+# Resolve repo root (this script lives in repo\scripts\setup.ps1)
+$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+Push-Location $RepoRoot
+
+# --- vcpkg -------------------------------------------------------------------
 if (Test-Path $VcpkgRoot) {
     Write-Host "vcpkg found at $VcpkgRoot"
 } else {
@@ -36,4 +40,6 @@ if (-not $NoGit) {
     }
 }
 
-Write-Host "`nReady. Open this folder in Visual Studio 2022 and start at 00_ConsoleHelloWorld." -ForegroundColor Green
+Pop-Location
+Write-Host "`nDone. Open this folder in Visual Studio 2022, or configure with CMake:" -ForegroundColor Green
+Write-Host '  cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake"'
