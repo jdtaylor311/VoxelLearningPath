@@ -22,3 +22,7 @@
 //     REQUIRE(compare_guess(50, 90) == +1);
 //     REQUIRE(compare_guess(50, 50) ==  0);
 // }
+
+#include <catch2/catch_all.hpp>
+#include <string>
+#include "hello_utils.hpp"
